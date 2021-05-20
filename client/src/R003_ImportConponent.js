@@ -1,4 +1,4 @@
-import React, { Component } from "React";
+import React, { Component } from "react";
 
 class R003_ImportConponent extends Component {
   render() {
