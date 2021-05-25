@@ -1,6 +1,6 @@
-import React, { Componet } from "react";
+import React, { Component } from "react";
 
-class R007_LifectcleEx extends Component {
+class R008_LifecycleEx extends Component {
   static getDerivedStateFromProps(props, state) {
     console.log("2. getDerivedStateFromProps Call : " + props.prop_value);
     return { tmp_state: props.prop_value };
@@ -15,6 +15,14 @@ class R007_LifectcleEx extends Component {
   componentDidMount() {
     console.log("4. componentDidMount Call");
     console.log("5. tmp_state : " + this.state.tmp_state);
+    this.setState({ tmp_state2: true });
+  }
+
+  shouldComponentUpdate(props, state) {
+    console.log(
+      "6. shouldComponentUpdate Call / tmp_state2 = " + state.tmp_state2
+    );
+    return state.tmp_state2;
   }
 
   render() {
@@ -22,3 +30,5 @@ class R007_LifectcleEx extends Component {
     return <h2>[THIS IS COMPONENTDIDMOUNT FUNCTION]</h2>;
   }
 }
+
+export default R008_LifecycleEx;
