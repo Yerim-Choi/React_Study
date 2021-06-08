@@ -16,7 +16,10 @@ class R20_PropsObjVal extends Component {
 }
 
 R20_PropsObjVal.propTypes = {
-  // Object Json: datatype.object,
+//   Object Json: datatype.object.shape({
+//       react: datatype.string,
+//       twohundred: datatype.number
+  })
 };
 
 export default R20_PropsObjVal;
