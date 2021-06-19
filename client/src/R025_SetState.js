@@ -9,8 +9,8 @@ class R025_SetState extends Component {
   }
 
   StateChange = (flag) => {
-    if (flag === "direct") this.stateStateString = "리액트";
-    if (flag === "setState") this.setState({ StateString: "리액트" });
+    if (flag === "direct") this.state.StateString = "리액트";
+    if (flag === "setstate") this.setState({ StateString: "리액트" });
   };
 
   render() {
@@ -22,14 +22,11 @@ class R025_SetState extends Component {
         <button onClick={(e) => this.StateChange("setstate", e)}>
           setState로 변경
         </button>
+        <br />
+        [state 변경하기] StateString : {this.state.StateString}
       </div>
     );
   }
 }
-
-R025_SetState.defaultProps = {
-  ReactString: "리액트",
-  R0eactNumber: 400,
-};
 
 export default R025_SetState;
