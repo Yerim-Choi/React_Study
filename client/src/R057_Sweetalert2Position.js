@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Swal from "sweetalert2";
 
-class R057_Sweetaler2Position extends Component {
+class R057_Sweetalert2Position extends Component {
   saveAlert = (flag, positionflag, e) => {
     Swal.fire({
       position: positionflag,
@@ -25,4 +25,4 @@ class R057_Sweetaler2Position extends Component {
   }
 }
 
-export default R057_Sweetaler2Position;
+export default R057_Sweetalert2Position;
