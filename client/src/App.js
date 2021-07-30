@@ -1,6 +1,6 @@
 import React from "react";
 // import "./App.css";
-import FetchGet from "./R059_FetchGet.js";
+import FetchPost from "./R060_FetchPost.js";
 // import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div>
       <h1>Start React 200!</h1>
       <p>CSS 적용하기</p>
-      <FetchGet />
+      <FetchPost />
     </div>
   );
 }
