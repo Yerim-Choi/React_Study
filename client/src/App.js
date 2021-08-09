@@ -1,6 +1,6 @@
 import React from "react";
 // import "./App.css";
-import ReactonClick from "./R066_onClick";
+import ReactChange from "./R067_onChange.js";
 // import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div>
       <h1>Start React 200!</h1>
       <p>CSS 적용하기</p>
-      <ReactonClick />
+      <ReactChange />
     </div>
   );
 }
