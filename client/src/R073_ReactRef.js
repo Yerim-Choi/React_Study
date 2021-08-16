@@ -18,11 +18,11 @@ class R073_ReactRef extends Component {
     return (
       <>
         <input id="id" type="text" ref={this.InputRef} />
-        <input type="button" value="Ref Focus" onClick={TouchList.RefFocus} />
+        <input type="button" value="Ref Focus" onClick={this.RefFocus} />
         <input
           type="button"
           value="Javascript Focus"
-          onClick={TouchList.JavascriptFocus}
+          onClick={this.JavascriptFocus}
         />
       </>
     );
