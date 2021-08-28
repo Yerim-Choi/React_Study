@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import cookie from "react-cookies";
 
-class R085_cookieSave extends Component {
+class R086_cookieLoad extends Component {
   componentDidMount() {
     const expires = new Date();
     expires.setMinutes(expires.getMinutes() + 60);
@@ -11,15 +11,18 @@ class R085_cookieSave extends Component {
       //  secure: true,
       //  httpOnly: true
     });
+    setTimeout(function () {
+      alert(cookie.load("userid"));
+    }, 1000);
   }
 
   render() {
     return (
       <>
-        <h3>react-cookies Save</h3>
+        <h3>react-cookies Load</h3>
       </>
     );
   }
 }
 
-export default R085_cookieSave;
+export default R086_cookieLoad;
