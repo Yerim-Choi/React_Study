@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class R089_reactRouter2 extends Component {
   render() {
@@ -7,7 +7,7 @@ class R089_reactRouter2 extends Component {
         <h1>path='/reactRouter2'</h1>
         <h3>R089_reactRouter</h3>
       </>
-    );
+    )
   }
 }
 
