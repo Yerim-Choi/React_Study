@@ -17,6 +17,8 @@ import reactDebounce from "./R094_reactDebounce";
 
 import reactThrottle from "./R095_reactThrottle";
 
+import floatingPopulationList from "./Floating_population/floatingPopulationList";
+
 class App extends Component {
   render() {
     return (
@@ -25,6 +27,11 @@ class App extends Component {
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/Debounce" component={reactDebounce} />
         <Route exact path="/Throttle" component={reactThrottle} />
+        <Route
+          exact
+          path="/floatingPopulationList"
+          component={floatingPopulationList}
+        />
         <Footer />
       </div>
     );
