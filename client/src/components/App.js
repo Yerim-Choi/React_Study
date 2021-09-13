@@ -19,6 +19,8 @@ import reactThrottle from "./R095_reactThrottle";
 
 import floatingPopulationList from "./Floating_population/floatingPopulationList";
 
+import rechartsSimpleLineChart from "./Floating_population/rechartsSimpleLineChart";
+
 class App extends Component {
   render() {
     return (
@@ -31,6 +33,11 @@ class App extends Component {
           exact
           path="/floatingPopulationList"
           component={floatingPopulationList}
+        />
+        <Route
+          exact
+          path="/rechartsSimpleLineChart"
+          component={rechartsSimpleLineChart}
         />
         <Footer />
       </div>

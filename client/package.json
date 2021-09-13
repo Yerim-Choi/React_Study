@@ -17,6 +17,7 @@
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
     "reactstrap": "^8.9.0",
+    "recharts": "^2.1.2",
     "redux": "^4.1.1",
     "shallow-equal": "^1.2.1",
     "web-vitals": "^1.0.1"
