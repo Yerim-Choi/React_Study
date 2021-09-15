@@ -23,6 +23,8 @@ import rechartsSimpleLineChart from "./Floating_population/rechartsSimpleLineCha
 
 import floatingPopulationListChart from "./Floating_population/floatingPopulationListChart";
 
+import floatingPopulationAreaChart from "./Floating_population/floatingPopulationAreaChart";
+
 class App extends Component {
   render() {
     return (
@@ -45,6 +47,11 @@ class App extends Component {
           exact
           path="/floatingPopulationListChart"
           component={floatingPopulationListChart}
+        />
+        <Route
+          exact
+          path="/floatingPopulationAreaChart"
+          component={floatingPopulationAreaChart}
         />
         <Footer />
       </div>
