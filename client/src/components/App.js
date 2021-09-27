@@ -30,6 +30,7 @@ import floatingPopulationComposedChart from "./Floating_population/floatingPopul
 import floatingPopulationScatterChart from "./Floating_population/floatingPopulationScatterChart";
 import reactProxy from "./R109_reactProxy";
 import ApiGetJson from "./R110_ApiGetJson";
+import ApiPostJson from "./R111_ApiPostJson";
 
 class App extends Component {
   render() {
@@ -76,6 +77,7 @@ class App extends Component {
         />
         <Route exact path="/reactProxy" component={reactProxy} />
         <Route exact path="/ApiGetJson" component={ApiGetJson} />
+        <Route exact path="/ApiPostJson" component={ApiPostJson} />
         <Footer />
       </div>
     );
