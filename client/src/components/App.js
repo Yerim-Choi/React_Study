@@ -13,7 +13,7 @@ import Footer from './Footer/Footer';
 // login
 import LoginForm from './LoginForm';
 
-import ApiPostJson from './R111_ApiPostJson';
+import SoftwareList from './SoftwareToolsManage/SoftwareList';
 
 class App extends Component {
   render () {
@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <HeaderAdmin/> 
         <Route exact path='/' component={LoginForm} />
-        <Route exact path='/ApiPostJson' component={ApiPostJson} />
+        <Route path='/SoftwareList' component={SoftwareList} />
         <Footer/>
       </div>
     );
