@@ -14,6 +14,7 @@ import Footer from './Footer/Footer';
 import LoginForm from './LoginForm';
 
 import SoftwareList from './SoftwareToolsManage/SoftwareList';
+import SoftwareView from './SoftwareToolsManage/SoftwareView';
 
 class App extends Component {
   render () {
@@ -22,6 +23,7 @@ class App extends Component {
         <HeaderAdmin/> 
         <Route exact path='/' component={LoginForm} />
         <Route path='/SoftwareList' component={SoftwareList} />
+        <Route path='/SoftwareView' component={SoftwareView} />
         <Footer/>
       </div>
     );
