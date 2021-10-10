@@ -23,7 +23,7 @@ class App extends Component {
         <HeaderAdmin/> 
         <Route exact path='/' component={LoginForm} />
         <Route path='/SoftwareList' component={SoftwareList} />
-        <Route path='/SoftwareView' component={SoftwareView} />
+        <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
         <Footer/>
       </div>
     );
