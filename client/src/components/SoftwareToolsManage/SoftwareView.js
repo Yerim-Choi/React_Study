@@ -8,7 +8,8 @@ class SoftwareView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            before_swtcode: props.match.params.swtcode
+            before_swtcode: props.match.params.swtcode,
+            selectedFile: null,
         }
     }
 
@@ -33,6 +34,22 @@ class SoftwareView extends Component {
                 $('#is_Giturl').val(data.swt_github_url)
                 $('#is_Comments').val(data.swt_comments)
                 $('#is_Swt_function').val(data.swt_function)
+                var manualName = data.swt_manual_path.replace('/swmanual/','')
+                var fileName = data.swt_big_imgpath.replace('/image/','')
+                var fileName2 = data.swt_imagepath.replace('/image/','')
+                $('#upload_img').prepend('<img id="uploadimg" src="'+data.swt_big_imgpath+'"/>')
+                $('#upload_img2').prepend('<img id="uploadimg2" src="'+data.swt_imagepath+'"/>')
+
+                $('#imagefile').val(fileName)
+                $('#imagefile2').val(fileName2)
+                $('#manualfile').val(manualName)
+
+                if($('#uploadimg').attr('src').indexOf("null") > -1){
+                    $('#uploadimg').hide()
+                }
+                if($('#uploadimg2').attr('src').indexOf("null") > -1){
+                    $('#uploadimg2').hide()
+                }
             } catch (error) {
                 alert('작업중 오류가 발생하였습니다.')
             }
@@ -130,6 +147,66 @@ class SoftwareView extends Component {
         })
     }
 
+    handleFileInput(type, e){
+        if(type =='file'){
+            $('#imagefile').val(e.target.files[0].name)
+        }else if(type =='file2'){
+            $('#imagefile2').val(e.target.files[0].name)
+        }else if(type =='manual'){
+            $('#manualfile').val(e.target.files[0].name)
+        }
+        this.setState({
+          selectedFile : e.target.files[0],
+        })
+        setTimeout(function() {
+            if(type =='manual'){
+                this.handlePostMenual()
+            }else{
+                this.handlePostImage(type)
+            }
+        }.bind(this),1
+        );
+    }
+
+    handlePostMenual(){
+        const formData = new FormData();
+        formData.append('file', this.state.selectedFile);
+        return axios.post("/api/upload?type=uploads/swmanual/", formData).then(res => {
+            this.setState({menualName : res.data.filename})
+            $('#is_MenualName').remove()
+            $('#upload_menual').prepend('<input id="is_MenualName" type="hidden"'
+            +'name="is_MenualName" value="/swmanual/'+this.state.menualName+'"}/>')
+        }).catch(error => {
+            alert('작업중 오류가 발생하였습니다.', error, 'error', '닫기')
+        })
+    }    
+
+    handlePostImage(type){
+        const formData = new FormData();
+        formData.append('file', this.state.selectedFile);
+        return axios.post("/api/upload?type=uploads/image/", formData).then(res => {
+            if(type =='file'){
+                this.setState({fileName : res.data.filename})
+                $('#is_MainImg').remove()
+                $('#uploadimg').remove()
+                $('#upload_img').prepend('<img id="uploadimg" src="/image/'
+                +this.state.fileName+'"/>')
+                $('#upload_img').prepend('<input id="is_MainImg" type="hidden"'
+                +'name="is_MainImg" value="/image/'+this.state.fileName+'"}/>')
+            }else if(type =='file2'){
+                this.setState({fileName2 : res.data.filename})
+                $('#is_LabelImg').remove()
+                $('#uploadimg2').remove()
+                $('#upload_img2').prepend('<img id="uploadimg2" src="/image/'
+                +this.state.fileName2+'"/>')
+                $('#upload_img2').prepend('<input id="is_LabelImg" type="hidden"'
+                +'name="is_LabelImg" value="/image/'+this.state.fileName2+'"}/>')
+            }
+        }).catch(error => {
+            alert('작업중 오류가 발생하였습니다.')            
+        })
+    }
+
     render () {
         return (
             <section class="sub_wrap">
@@ -186,8 +263,10 @@ class SoftwareView extends Component {
                                             </th>
                                             <td class="fileBox fileBox_w1">
                                                 <label for="uploadBtn1" class="btn_file">파일선택</label>
-                                                <input type="text" id="manualfile" class="fileName fileName1" readonly="readonly" placeholder="선택된 파일 없음"/>
-                                                <input type="file" id="uploadBtn1" class="uploadBtn uploadBtn1" onChange={e => this.handleFileInput('manual',e)}/>	
+                                                <input type="text" id="manualfile" class="fileName fileName1" 
+                                                readonly="readonly" placeholder="선택된 파일 없음"/>
+                                                <input type="file" id="uploadBtn1" class="uploadBtn uploadBtn1"
+                                                onChange={e => this.handleFileInput('manual',e)}/>	
                                                 <div id="upload_menual">
                                                 </div>
                                             </td>
@@ -198,8 +277,10 @@ class SoftwareView extends Component {
                                             </th>
                                             <td className="fileBox fileBox1">
                                                 <label htmlFor='imageSelect' className="btn_file">파일선택</label>
-                                                <input type="text" id="imagefile" className="fileName fileName1" readOnly="readonly" placeholder="선택된 파일 없음"/>
-                                                <input type="file" id="imageSelect" className="uploadBtn uploadBtn1" onChange={e => this.handleFileInput('file',e)}/>
+                                                <input type="text" id="imagefile" className="fileName fileName1"
+                                                readOnly="readonly" placeholder="선택된 파일 없음"/>
+                                                <input type="file" id="imageSelect" className="uploadBtn uploadBtn1"
+                                                onChange={e => this.handleFileInput('file',e)}/>
                                                 <div id="upload_img">
                                                 </div>
                                             </td>
@@ -210,8 +291,10 @@ class SoftwareView extends Component {
                                             </th>
                                             <td className="fileBox fileBox2">
                                                 <label htmlFor='imageSelect2' className="btn_file">파일선택</label>
-                                                <input type="text" id="imagefile2" className="fileName fileName1" readOnly="readonly" placeholder="선택된 파일 없음"/>
-                                                <input type="file" id="imageSelect2" className="uploadBtn uploadBtn1" onChange={e => this.handleFileInput('file2',e)}/>
+                                                <input type="text" id="imagefile2" className="fileName fileName1"
+                                                readOnly="readonly" placeholder="선택된 파일 없음"/>
+                                                <input type="file" id="imageSelect2" className="uploadBtn uploadBtn1"
+                                                onChange={e => this.handleFileInput('file2',e)}/>
                                                 <div id="upload_img2">
                                                 </div>
                                             </td>
