@@ -8,6 +8,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "concurrently": "^5.0.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
