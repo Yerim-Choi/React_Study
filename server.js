@@ -14,6 +14,7 @@ app.use("/api/Swtool", swtoolRouter);
 app.use("/api/upload", fileuploadRouter);
 app.use(express.static("./uploads"));
 app.use("/api/register", usersRouter);
+app.use("/api/LoginForm", usersRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
