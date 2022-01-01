@@ -23,24 +23,24 @@ cron.schedule('* * * * *', () => {
     password: "react200RDS"
   });
 
-  mybatisMapper.createMapper(['./models/'+mapper+'.xml']);
+  mybatisMapper.createMapper(['./models/' + mapper + '.xml']);
   var time1 = new Date();
-  console.log('## '+time1+ ' ##');
-  console.log("\n Called Mapper Name  = "+mapper);
+  console.log('## ' + time1 + ' ##');
+  console.log("\n Called Mapper Name  = " + mapper);
 
   var format = { language: 'sql', indent: '  ' };
   var query = mybatisMapper.getStatement(mapper, mapper_id, param, format);
   console.log("\n========= Node Mybatis Query Log Start =========");
-  console.log("* mapper namespce : "+mapper+"."+mapper_id+" *\n");
-  console.log(query+"\n");
+  console.log("* mapper namespce : " + mapper + "." + mapper_id + " *\n");
+  console.log(query + "\n");
 
   connection.connect();
   connection.query(query, function (error, results, fields) {
     if (error) {
-      console.log("db error************* : "+error);
+      console.log("db error************* : " + error);
     }
     var time2 = new Date();
-    console.log('## '+time2+ ' ##');
+    console.log('## ' + time2 + ' ##');
     console.log('## RESULT DATA LIST ## : \n', results);
     console.log("========= Node Mybatis Query Log End =========\n");
   });
