@@ -1,0 +1,4 @@
+https://www.amazon.com/ko/
+
+[AWS Management Console]
+EC2 Dashboard 페이지 인스턴스 시작
