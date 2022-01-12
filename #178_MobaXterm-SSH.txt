@@ -1,0 +1,8 @@
+https://mobaxterm.mobatek.net/download.html
+
+1. MobaXtream 실행 왼쪽 상단 [Session] 
+- SSH 
+- Remote host 탄력적 IP 입력
+- Username EC2 서버의 기본값 ubunto
+- Advanced Sftp settings 탭 Use private key 체크 박스
+- Use private key 오른쪽 파일 선택 기능 EC2 서버 키 페어 파일 업로드
